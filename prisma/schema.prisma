@@ -1,0 +1,297 @@
+// Rudra Techno — Prisma schema
+// Multi-tenant (shared DB / shared schema, tenantId discriminator) + Auth.js adapter models.
+// Docs: docs/ARCHITECTURE.md §5
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------------
+// Enums
+// ---------------------------------------------------------------------------
+
+enum Role {
+  ADMIN
+  CLIENT
+  DEVELOPER
+}
+
+enum ProjectStage {
+  REQUESTED
+  QUOTED
+  APPROVED
+  IN_PROGRESS
+  REVIEW
+  DELIVERED
+  CLOSED
+  CANCELLED
+}
+
+enum TaskStatus {
+  BACKLOG
+  IN_PROGRESS
+  REVIEW
+  DONE
+}
+
+enum InvoiceStatus {
+  DRAFT
+  SENT
+  PAID
+  OVERDUE
+  VOID
+  REFUNDED
+}
+
+enum PayProvider {
+  RAZORPAY
+  STRIPE
+}
+
+enum TicketStatus {
+  OPEN
+  PENDING
+  RESOLVED
+  CLOSED
+}
+
+// ---------------------------------------------------------------------------
+// Tenancy & users
+// ---------------------------------------------------------------------------
+
+model Tenant {
+  id        String    @id @default(cuid())
+  name      String
+  slug      String    @unique
+  users     User[]
+  projects  Project[]
+  packages  Package[]
+  tickets   Ticket[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model User {
+  id            String         @id @default(cuid())
+  tenantId      String
+  tenant        Tenant         @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  email         String         @unique
+  passwordHash  String? // null when OAuth-only
+  name          String?
+  image         String?
+  role          Role           @default(CLIENT)
+  emailVerified DateTime?
+  accounts      Account[]
+  sessions      Session[]
+  ownedProjects Project[]      @relation("ClientProjects")
+  assignments   TaskAssignee[]
+  messages      Message[]
+  tickets       Ticket[]
+  files         FileAsset[]    @relation("UploadedFiles")
+  events        ProjectEvent[] @relation("ActorEvents")
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
+  @@index([tenantId])
+}
+
+// ---------------------------------------------------------------------------
+// Catalog
+// ---------------------------------------------------------------------------
+
+model Package {
+  id        String    @id @default(cuid())
+  tenantId  String
+  tenant    Tenant    @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  name      String
+  priceINR  Int?
+  priceUSD  Int?
+  features  Json
+  active    Boolean   @default(true)
+  projects  Project[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([tenantId])
+}
+
+// ---------------------------------------------------------------------------
+// Projects & lifecycle
+// ---------------------------------------------------------------------------
+
+model Project {
+  id          String         @id @default(cuid())
+  tenantId    String
+  tenant      Tenant         @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  clientId    String
+  client      User           @relation("ClientProjects", fields: [clientId], references: [id])
+  title       String
+  description String
+  stage       ProjectStage   @default(REQUESTED)
+  packageId   String?
+  package     Package?       @relation(fields: [packageId], references: [id])
+  budget      Int?
+  currency    String         @default("INR")
+  deadline    DateTime?
+  progress    Int            @default(0) // 0..100
+  tasks       Task[]
+  invoices    Invoice[]
+  messages    Message[]
+  files       FileAsset[]
+  events      ProjectEvent[]
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  @@index([tenantId, stage])
+  @@index([clientId])
+}
+
+model Task {
+  id        String         @id @default(cuid())
+  tenantId  String
+  projectId String
+  project   Project        @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  title     String
+  status    TaskStatus     @default(BACKLOG)
+  dueDate   DateTime?
+  order     Int            @default(0)
+  assignees TaskAssignee[]
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+
+  @@index([tenantId, status])
+  @@index([projectId])
+}
+
+model TaskAssignee {
+  taskId String
+  userId String
+  task   Task   @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([taskId, userId])
+  @@index([userId])
+}
+
+model Invoice {
+  id          String        @id @default(cuid())
+  tenantId    String
+  projectId   String
+  project     Project       @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  number      String        @unique
+  amount      Int
+  currency    String
+  status      InvoiceStatus @default(DRAFT)
+  provider    PayProvider?
+  providerRef String? // razorpay order / stripe invoice id
+  dueDate     DateTime?
+  paidAt      DateTime?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([tenantId, status])
+  @@index([projectId])
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  tenantId  String
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id])
+  body      String
+  createdAt DateTime @default(now())
+
+  @@index([projectId, createdAt])
+}
+
+model Ticket {
+  id        String       @id @default(cuid())
+  tenantId  String
+  tenant    Tenant       @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  authorId  String
+  author    User         @relation(fields: [authorId], references: [id])
+  subject   String
+  body      String
+  status    TicketStatus @default(OPEN)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+
+  @@index([tenantId, status])
+}
+
+model FileAsset {
+  id         String   @id @default(cuid())
+  tenantId   String
+  projectId  String
+  project    Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  url        String
+  name       String
+  size       Int
+  uploadedBy String
+  uploader   User     @relation("UploadedFiles", fields: [uploadedBy], references: [id])
+  createdAt  DateTime @default(now())
+
+  @@index([projectId])
+}
+
+model ProjectEvent {
+  id        String   @id @default(cuid())
+  tenantId  String
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  type      String // STAGE_CHANGE, NOTE, UPLOAD, ASSIGN, ...
+  data      Json
+  actorId   String
+  actor     User     @relation("ActorEvents", fields: [actorId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@index([projectId, createdAt])
+}
+
+// ---------------------------------------------------------------------------
+// Auth.js (NextAuth) adapter models — used in Phase 2
+// ---------------------------------------------------------------------------
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
