@@ -1,111 +1,81 @@
-# Rudra Techno
+# Startup - Free Next.js Startup Website Template
 
-**Custom websites & software, built for you.** Rudra Techno is a multi-tenant SaaS
-platform where clients request projects, track progress in real time, chat with their
-team, and pay invoices securely — while admins manage delivery and developers work a
-task board. This repo contains the marketing site plus the foundations of the app.
+Startup is a free, open-source, and premium-quality [**Next.js startup website template**](https://nextjstemplates.com/templates/startup) that comes with everything you need to launch a startup, business, or SaaS website, including all essential sections, components, and pages.
 
-Owner: **Anuj Rastogi** · Brand: **Rudra Techno**
+If you're looking for a high-quality and visually appealing, feature-rich Next.js Template for your next startup, SaaS, or business website, this is the perfect choice and starting point for you!
 
----
+### ✨ Key Features
 
-## ✨ Features
+- Crafted for Startup and SaaS Business
+- Next.js and Tailwind CSS
+- All Essential Business Sections and Pages
+- High-quality and Clean Design
+- Dark and Light Version
+- TypeScript Support
+and Much More ...
 
-**Live today (marketing site)**
-- Modern, responsive landing page with light/dark themes
-- Pages: Home, Services, Portfolio, Pricing, Blog, About, Contact, Sign in / Sign up
-- Rudra Techno branding throughout (logo, favicon, copy)
+### 🙌 Detailed comparison between the Free and Pro versions of Startup
 
-**In progress (SaaS platform)** — see [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
-- Role-based dashboards for **Clients**, **Admins**, and **Developers**
-- RBAC with three enforcement layers (route middleware, `can()` policy, UI `<Can>` guard)
-- Multi-tenancy (shared DB + `tenantId` discriminator)
-- Hybrid payments: **Razorpay** (INR) + **Stripe** (global) behind one abstraction
-- Project tracking, kanban tasks, invoices, messaging, and support tickets
+| Feature             | Free | Pro |
+|---------------------|------------|----------|
+| Next.js Landing Page             | ✅ Yes      | ✅ Yes      |
+| All The Integrations - Auth, DB, Payments, Blog and many more ...             | ❌ No      | ✅ Yes |
+| Homepage Variations             | 1      | 2 |
+| Additional SaaS Pages and Components             | ❌ No      | ✅ Yes |
+| Functional Blog with Sanity       | ❌ No      | ✅ Yes |
+| Use with Commercial Projects            | ✅ Yes      | ✅ Yes      |
+| Lifetime Free Updates             | ✅ Yes      | ✅ Yes |
+| Email Support       | ❌ No         | ✅ Yes       |
+| Community Support         | ✅ Yes         | ✅ Yes       |
 
-## 🧱 Tech Stack
+### [🔥 Get Startup Pro](https://nextjstemplates.com/templates/saas-starter-startup)
 
-| Layer        | Choice                                              |
-|--------------|-----------------------------------------------------|
-| Framework    | Next.js 16 (App Router, Turbopack), React 19        |
-| Language     | TypeScript                                          |
-| Styling      | Tailwind CSS v4, `next-themes`                       |
-| Database     | PostgreSQL + Prisma ORM                             |
-| Auth         | Auth.js (NextAuth) — *Phase 2*                       |
-| Payments     | Razorpay + Stripe — *Phase 8*                        |
-| Passwords    | bcryptjs                                            |
+[![Startup Pro](https://raw.githubusercontent.com/NextJSTemplates/startup-nextjs/main/startup-pro.webp)](https://nextjstemplates.com/templates/saas-starter-startup)
 
-## 🚀 Getting Started
+Startup Pro - Expertly crafted for fully-functional, high-performing SaaS startup websites. Comes with with Authentication, Database, Blog, and all the essential integrations necessary for SaaS business sites.
 
-```bash
-# 1. Install dependencies (runs `prisma generate` automatically)
-npm install
+- [🚀 View Free Demo](https://startup.nextjstemplates.com/)
 
-# 2. Configure environment
-cp .env.example .env        # then fill in DATABASE_URL, secrets, etc.
+- [🚀 View Pro Demo](https://startup-pro.nextjstemplates.com/)
 
-# 3. Set up the database (requires a Postgres URL in .env)
-npm run db:push             # apply the Prisma schema
-npm run db:seed             # seed a demo tenant + sample data
+- [📦 Download](https://nextjstemplates.com/templates/startup)
 
-# 4. Run the dev server
-npm run dev                 # http://localhost:3000
-```
+- [🔥 Get Pro](https://nextjstemplates.com/templates/saas-starter-startup)
 
-### Demo logins (after seeding)
+- [🔌 Documentation](https://nextjstemplates.com/docs)
 
-All seeded accounts use the password `Password123!`:
+### ⚡ Deploy Now
 
-| Role      | Email                     |
-|-----------|---------------------------|
-| Admin     | `admin@rudratechno.com`   |
-| Developer | `dev@rudratechno.com`     |
-| Client    | `client@example.com`      |
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FNextJSTemplates%2Fstartup-nextjs)
 
-## 📜 Scripts
+[![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/NextJSTemplates/startup-nextjs)
 
-| Command            | Description                                  |
-|--------------------|----------------------------------------------|
-| `npm run dev`      | Start the dev server (Turbopack)             |
-| `npm run build`    | Production build                             |
-| `npm run start`    | Run the production build                     |
-| `npm run db:push`  | Push the Prisma schema to the database       |
-| `npm run db:migrate` | Create/run a migration                     |
-| `npm run db:seed`  | Seed demo data                               |
-| `npm run db:studio`| Open Prisma Studio                           |
+### 📄 License
 
-## 📁 Project Structure
+Startup is 100% free and open-source, feel free to use with your personal and commercial projects.
 
-```
-docs/                  Architecture blueprint + project documentation (PDF/HTML)
-prisma/
-  schema.prisma        Multi-tenant data model (Tenant, User, Project, Task, Invoice…)
-  seed.ts              Demo tenant + users + sample project
-public/images/logo/    Rudra_Techno-logo.png (brand logo)
-src/
-  app/                 App Router pages (marketing + auth)
-  app/icon.png         Brand favicon (trident mark)
-  components/          Header, Footer, Hero, Features, Pricing, Contact, …
-  lib/db.ts            Prisma singleton + tenant-scoped client helper
-```
+### 💜 Support
 
-## 📚 Documentation
+If you like the template, please star this repository to inspire the team to create more stuff like this and reach more users like you!
 
-- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — full 13-section blueprint (decisions,
-  schema, RBAC, payments, 12-phase build plan).
-- `aboutmywebsite.pdf` — plain-language overview of every page, the database, Razorpay,
-  and the backend, with architecture diagrams.
+### ✨ Explore and Download - Free [Next.js Templates](https://nextjstemplates.com)
 
-## 🗺️ Roadmap
+### Update Log
 
-The build follows a phased plan (see the architecture doc):
+**03 December 2025**
 
-- **Phase 0** — Rebrand to Rudra Techno ✅
-- **Phase 1** — Prisma schema + Postgres data layer ✅
-- **Phase 2** — Auth.js (credentials + Google), route guards — *next*
-- **Phase 8** — Hybrid payments (Razorpay + Stripe)
-- …through dashboards, messaging, analytics, and deployment.
+- Upgrade to Next.js 16
+- Fixed video modal issue
 
-## 📄 License
+**10 April 2025**
 
-Proprietary — © 2026 Rudra Techno. All rights reserved.
+- Fix peer deps issue with Next.js 15
+- Upgrade to tailwind v4
+- Refactored blog cards for handling edge cases(text ellipsis on bio, keeping author details at the bottom etc.)
+- Re-wrote blog details page with icons separation, fallback author image and better markup.
+- Fixed duplicate key errors on homepage.
+- Separated icons on theme-switcher button, and refactored scroll-to-top button.
+
+**29 Jan 2025**
+
+- Upgraded to Next.js 15
