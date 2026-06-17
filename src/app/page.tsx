@@ -12,10 +12,11 @@ import Video from "@/components/Video";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Rudra Techno — Custom Websites & Software, Built for You",
+  title: {
+    absolute: "Rudra Techno — Custom Websites & Software, Built for You",
+  },
   description:
     "Rudra Techno is a SaaS platform that designs and builds custom websites and software. Request a project, track progress in real time, and manage delivery — all in one place.",
-  // other metadata
 };
 
 export default function Home() {
