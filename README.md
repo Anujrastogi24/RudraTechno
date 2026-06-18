@@ -1,81 +1,67 @@
-# Startup - Free Next.js Startup Website Template
+# Rudra Techno
 
-Startup is a free, open-source, and premium-quality [**Next.js startup website template**](https://nextjstemplates.com/templates/startup) that comes with everything you need to launch a startup, business, or SaaS website, including all essential sections, components, and pages.
+**Rudra Techno** is a multi-tenant SaaS platform that designs and builds custom websites and software for growing businesses. Clients can request a project, track progress in real time, chat with their delivery team, and pay securely — all in one place.
 
-If you're looking for a high-quality and visually appealing, feature-rich Next.js Template for your next startup, SaaS, or business website, this is the perfect choice and starting point for you!
+Owner: **Anuj Rastogi**
 
-### ✨ Key Features
+---
 
-- Crafted for Startup and SaaS Business
-- Next.js and Tailwind CSS
-- All Essential Business Sections and Pages
-- High-quality and Clean Design
-- Dark and Light Version
-- TypeScript Support
-and Much More ...
+## ✨ What's Inside
 
-### 🙌 Detailed comparison between the Free and Pro versions of Startup
+- **Marketing site** — Hero, services, products, portfolio, blog, and contact pages with dark/light themes.
+- **RudraWeb Analyzer** — our own product: an instant website & SEO audit tool that scans any URL and returns a clear, prioritized report on SEO, accessibility, and web best practices.
+- **Role-based dashboards** (planned) — separate experiences for Clients, Admins, and Developers with RBAC.
+- **Hybrid payments** (planned) — Razorpay + Stripe.
+- **SEO foundation** — server-rendered metadata, Open Graph & Twitter cards, dynamic OG image, `sitemap.xml`, `robots.txt`, and Organization + SoftwareApplication JSON-LD.
 
-| Feature             | Free | Pro |
-|---------------------|------------|----------|
-| Next.js Landing Page             | ✅ Yes      | ✅ Yes      |
-| All The Integrations - Auth, DB, Payments, Blog and many more ...             | ❌ No      | ✅ Yes |
-| Homepage Variations             | 1      | 2 |
-| Additional SaaS Pages and Components             | ❌ No      | ✅ Yes |
-| Functional Blog with Sanity       | ❌ No      | ✅ Yes |
-| Use with Commercial Projects            | ✅ Yes      | ✅ Yes      |
-| Lifetime Free Updates             | ✅ Yes      | ✅ Yes |
-| Email Support       | ❌ No         | ✅ Yes       |
-| Community Support         | ✅ Yes         | ✅ Yes       |
+## 🧱 Tech Stack
 
-### [🔥 Get Startup Pro](https://nextjstemplates.com/templates/saas-starter-startup)
+| Area        | Technology                                  |
+|-------------|---------------------------------------------|
+| Framework   | Next.js 16 (App Router, Turbopack)          |
+| UI          | React 19, TypeScript, Tailwind CSS v4       |
+| Theming     | next-themes (dark default)                  |
+| Database    | PostgreSQL + Prisma                         |
+| Auth        | Auth.js (planned)                           |
+| Payments    | Razorpay + Stripe (planned)                 |
 
-[![Startup Pro](https://raw.githubusercontent.com/NextJSTemplates/startup-nextjs/main/startup-pro.webp)](https://nextjstemplates.com/templates/saas-starter-startup)
+## 🚀 Getting Started
 
-Startup Pro - Expertly crafted for fully-functional, high-performing SaaS startup websites. Comes with with Authentication, Database, Blog, and all the essential integrations necessary for SaaS business sites.
+```bash
+# Install dependencies
+npm install
 
-- [🚀 View Free Demo](https://startup.nextjstemplates.com/)
+# Set up environment variables
+cp .env.example .env
+# then fill in DATABASE_URL, NEXT_PUBLIC_SITE_URL, etc.
 
-- [🚀 View Pro Demo](https://startup-pro.nextjstemplates.com/)
+# Run the database migrations
+npx prisma migrate dev
 
-- [📦 Download](https://nextjstemplates.com/templates/startup)
+# Start the dev server
+npm run dev
+```
 
-- [🔥 Get Pro](https://nextjstemplates.com/templates/saas-starter-startup)
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-- [🔌 Documentation](https://nextjstemplates.com/docs)
+## ⚙️ Environment Variables
 
-### ⚡ Deploy Now
+| Variable               | Description                                              |
+|------------------------|----------------------------------------------------------|
+| `DATABASE_URL`         | PostgreSQL connection string used by Prisma.             |
+| `NEXT_PUBLIC_SITE_URL` | Public site URL — drives canonical URLs, sitemap, OG tags. Defaults to `https://rudratechno.com`. |
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FNextJSTemplates%2Fstartup-nextjs)
+> `.env` is gitignored. Use `.env.example` as the template and never commit secrets.
 
-[![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/NextJSTemplates/startup-nextjs)
+## 📦 Available Scripts
 
-### 📄 License
+```bash
+npm run dev      # Start the development server
+npm run build    # Production build
+npm run start    # Run the production build
+npm run lint     # Lint the codebase
+```
 
-Startup is 100% free and open-source, feel free to use with your personal and commercial projects.
+## 📄 License
 
-### 💜 Support
-
-If you like the template, please star this repository to inspire the team to create more stuff like this and reach more users like you!
-
-### ✨ Explore and Download - Free [Next.js Templates](https://nextjstemplates.com)
-
-### Update Log
-
-**03 December 2025**
-
-- Upgrade to Next.js 16
-- Fixed video modal issue
-
-**10 April 2025**
-
-- Fix peer deps issue with Next.js 15
-- Upgrade to tailwind v4
-- Refactored blog cards for handling edge cases(text ellipsis on bio, keeping author details at the bottom etc.)
-- Re-wrote blog details page with icons separation, fallback author image and better markup.
-- Fixed duplicate key errors on homepage.
-- Separated icons on theme-switcher button, and refactored scroll-to-top button.
-
-**29 Jan 2025**
-
-- Upgraded to Next.js 15
+© Rudra Techno. All rights reserved.
