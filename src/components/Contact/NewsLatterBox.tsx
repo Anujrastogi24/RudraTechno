@@ -12,13 +12,13 @@ const NewsLatterBox = () => {
   const stopColor = mounted && theme === "light" ? "#4A6CF7" : "#fff";
 
   return (
-    <div className="shadow-three dark:bg-gray-dark relative z-10 rounded-xs bg-white p-8 sm:p-11 lg:p-8 xl:p-11">
+    <div className="relative z-10 overflow-hidden rounded-2xl border border-gray-200 bg-white p-8 sm:p-11 lg:p-8 xl:p-11 dark:border-white/10 dark:bg-gray-dark">
       <h3 className="mb-4 text-2xl leading-tight font-bold text-black dark:text-white">
-        Subscribe to receive future updates
+        Subscribe for updates
       </h3>
-      <p className="border-body-color/25 text-body-color mb-11 border-b pb-11 text-base leading-relaxed dark:border-white/25">
-        Lorem ipsum dolor sited Sed ullam corper consectur adipiscing Mae ornare
-        massa quis lectus.
+      <p className="mb-11 border-b border-body-color/15 pb-11 text-base leading-relaxed text-body-color dark:border-white/15 dark:text-body-color-dark">
+        Get occasional product updates and web tips from the Rudra Techno team.
+        No spam — unsubscribe anytime.
       </p>
       <div>
         <input

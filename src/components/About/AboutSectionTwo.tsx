@@ -28,29 +28,29 @@ const AboutSectionTwo = () => {
             <div className="max-w-[470px]">
               <div className="mb-9">
                 <h3 className="mb-4 text-xl font-bold text-black dark:text-white sm:text-2xl lg:text-xl xl:text-2xl">
-                  Bug free code
+                  Production-grade code
                 </h3>
-                <p className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                <p className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed dark:text-body-color-dark">
+                  Typed, tested, and reviewed. We build on a modern stack so your
+                  product is fast, secure, and easy to extend later.
                 </p>
               </div>
               <div className="mb-9">
                 <h3 className="mb-4 text-xl font-bold text-black dark:text-white sm:text-2xl lg:text-xl xl:text-2xl">
-                  Premier support
+                  A team on chat
                 </h3>
-                <p className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt.
+                <p className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed dark:text-body-color-dark">
+                  Talk directly to the people building your product — no account
+                  managers relaying messages, no waiting days for a reply.
                 </p>
               </div>
               <div className="mb-1">
                 <h3 className="mb-4 text-xl font-bold text-black dark:text-white sm:text-2xl lg:text-xl xl:text-2xl">
-                  Next.js
+                  Built to scale
                 </h3>
-                <p className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed">
-                  Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt
-                  consectetur adipiscing elit setim.
+                <p className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed dark:text-body-color-dark">
+                  From a landing page to a multi-tenant SaaS platform, we
+                  architect for where your business is headed — not just today.
                 </p>
               </div>
             </div>

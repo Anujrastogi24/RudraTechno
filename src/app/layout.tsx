@@ -3,11 +3,15 @@ import Header from "@/components/Header";
 import ScrollToTop from "@/components/ScrollToTop";
 import { siteConfig } from "@/lib/site";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Geist } from "next/font/google";
 import { Providers } from "./providers";
 import "../styles/index.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const geist = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -83,7 +87,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html suppressHydrationWarning lang="en">
+    <html suppressHydrationWarning lang="en" className={geist.variable}>
       <head>
         <script
           type="application/ld+json"
@@ -93,7 +97,7 @@ export default function RootLayout({
         />
       </head>
 
-      <body className={`bg-[#FCFCFC] dark:bg-black ${inter.className}`}>
+      <body className="bg-[#FCFCFC] dark:bg-black">
         <Providers>
           <div className="isolate">
             <Header />

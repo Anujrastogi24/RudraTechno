@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap')
-layer(base);
-
 @import 'tailwindcss';
 
 @custom-variant dark (&:is(.dark *));
@@ -61,7 +58,12 @@ layer(base);
 
 @utility container {
   margin-inline: auto;
-  padding-inline: 1rem;
+  max-width: 1280px;
+  padding-inline: 1.5rem;
+
+  @media (min-width: 768px) {
+    padding-inline: 2rem;
+  }
 }
 
 /*
@@ -82,31 +84,9 @@ layer(base);
   }
 }
 
-@utility sticky {
-  & .header-logo {
-    @apply py-5 lg:py-2;
-  }
-
-  & .menu-scroll.active {
-    @apply opacity-70;
-  }
-}
-
-@utility header-logo {
-  .sticky & {
-    @apply py-5 lg:py-2;
-  }
-}
-
 @utility menu-scroll {
-  .sticky &.active {
-    @apply opacity-70;
-  }
-}
-
-@utility active {
-  .sticky &.menu-scroll {
-    @apply opacity-70;
+  &.active {
+    @apply text-primary dark:text-white;
   }
 }
 
@@ -123,8 +103,23 @@ layer(base);
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    font-family: "Inter", sans-serif;
+    font-family: var(--font-geist), ui-sans-serif, system-ui, -apple-system,
+      "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Tighter, more confident headings — premium SaaS feel */
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: -0.02em;
   }
 }
 

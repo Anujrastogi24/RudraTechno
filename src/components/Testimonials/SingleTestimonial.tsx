@@ -19,11 +19,11 @@ const SingleTestimonial = ({ testimonial }: { testimonial: Testimonial }) => {
   }
 
   return (
-    <div className="w-full">
-      <div className="shadow-two hover:shadow-one dark:bg-dark dark:shadow-three dark:hover:shadow-gray-dark rounded-xs bg-white p-8 duration-300 lg:px-5 xl:px-8">
+    <div className="h-full">
+      <div className="flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-8 transition-all duration-200 hover:border-primary/30 hover:shadow-lg dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-primary/40">
         <div className="mb-5 flex items-center space-x-1">{ratingIcons}</div>
-        <p className="border-body-color/10 text-body-color mb-8 border-b pb-8 text-base leading-relaxed dark:border-white/10 dark:text-white">
-          “{content}
+        <p className="mb-8 flex-1 text-base leading-relaxed text-body-color dark:text-body-color-dark">
+          “{content}”
         </p>
         <div className="flex items-center">
           <div className="relative mr-4 h-[50px] w-full max-w-[50px] overflow-hidden rounded-full">
