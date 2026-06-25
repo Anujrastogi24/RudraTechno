@@ -33,55 +33,58 @@ const Header = () => {
       }`}
     >
       <div className="container">
-        <div className="flex h-[72px] items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex shrink-0 items-center">
-            <Image
-              src="/images/logo/Rudra_Techno-logo.png"
-              alt="Rudra Techno"
-              width={300}
-              height={200}
-              priority
-              className="h-11 w-auto lg:h-12"
-            />
-          </Link>
+        <div className="flex h-24 items-center justify-between">
+          {/* Left: logo + nav grouped together */}
+          <div className="flex items-center gap-x-8 xl:gap-x-12">
+            <Link href="/" className="flex shrink-0 items-center">
+              <Image
+                src="/images/logo/Rudra_Techno-logo.png"
+                alt="Rudra Techno"
+                width={300}
+                height={200}
+                priority
+                className="h-16 w-auto lg:h-20"
+              />
+            </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden lg:block">
-            <ul className="flex items-center gap-x-9">
-              {menuData.map((item) => {
-                const isActive =
-                  pathname === item.path ||
-                  (item.path !== "/" && pathname.startsWith(item.path ?? "###"));
-                return (
-                  <li key={item.id}>
-                    <Link
-                      href={item.path ?? "/"}
-                      className={`text-sm font-medium transition-colors ${
-                        isActive
-                          ? "text-primary dark:text-white"
-                          : "text-gray-600 hover:text-black dark:text-white/70 dark:hover:text-white"
-                      }`}
-                    >
-                      {item.title}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </nav>
+            {/* Desktop nav */}
+            <nav className="hidden lg:block">
+              <ul className="flex items-center gap-x-7 xl:gap-x-8">
+                {menuData.map((item) => {
+                  const isActive =
+                    pathname === item.path ||
+                    (item.path !== "/" &&
+                      pathname.startsWith(item.path ?? "###"));
+                  return (
+                    <li key={item.id}>
+                      <Link
+                        href={item.path ?? "/"}
+                        className={`text-[15px] font-medium transition-colors ${
+                          isActive
+                            ? "text-primary dark:text-white"
+                            : "text-gray-700 hover:text-black dark:text-white/70 dark:hover:text-white"
+                        }`}
+                      >
+                        {item.title}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
+          </div>
 
           {/* Right actions */}
           <div className="flex items-center gap-x-3">
             <Link
               href="/signin"
-              className="hidden text-sm font-medium text-gray-600 transition-colors hover:text-black md:block dark:text-white/70 dark:hover:text-white"
+              className="hidden text-[15px] font-medium text-gray-700 transition-colors hover:text-black md:block dark:text-white/70 dark:hover:text-white"
             >
               Sign in
             </Link>
             <Link
               href="/signup"
-              className="hidden rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-primary/90 hover:shadow-md md:inline-flex"
+              className="hidden rounded-lg bg-primary px-5 py-2.5 text-[15px] font-semibold text-white shadow-sm transition-all duration-200 hover:bg-primary/90 hover:shadow-md md:inline-flex"
             >
               Start a project
             </Link>
