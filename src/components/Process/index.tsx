@@ -41,17 +41,19 @@ const Process = () => {
           {steps.map((step) => (
             <div
               key={step.number}
-              className="rounded-2xl border border-gray-200 bg-white p-8 transition-all duration-200 hover:border-primary/30 hover:shadow-lg dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-primary/40"
+              className="group flex items-start gap-5 rounded-2xl border border-gray-200 bg-white p-8 transition-all duration-200 hover:border-primary/30 hover:shadow-lg dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-primary/40"
             >
-              <span className="text-sm font-semibold tracking-wider text-primary">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-sm font-semibold tracking-wider text-primary transition-colors group-hover:bg-primary group-hover:text-white">
                 {step.number}
               </span>
-              <h3 className="mt-4 mb-3 text-lg font-semibold text-black dark:text-white">
-                {step.title}
-              </h3>
-              <p className="text-base leading-relaxed text-body-color dark:text-body-color-dark">
-                {step.description}
-              </p>
+              <div>
+                <h3 className="mb-3 text-lg font-semibold text-black dark:text-white">
+                  {step.title}
+                </h3>
+                <p className="text-base leading-relaxed text-body-color dark:text-body-color-dark">
+                  {step.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>
