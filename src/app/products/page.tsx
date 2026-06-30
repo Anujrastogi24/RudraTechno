@@ -3,9 +3,17 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Products | Rudra Techno",
+  title: "Products",
   description:
     "Products built by Rudra Techno, including RudraWeb Analyzer — an instant website and SEO audit tool.",
+  alternates: { canonical: "/products" },
+  openGraph: {
+    title: "Products | Rudra Techno",
+    description:
+      "Products built by Rudra Techno, including RudraWeb Analyzer — an instant website and SEO audit tool.",
+    url: "/products",
+    type: "website",
+  },
 };
 
 const features = [
@@ -64,6 +72,7 @@ const ProductsPage = () => {
       <Breadcrumb
         pageName="Products"
         description="Software products built and owned by Rudra Techno — crafted with the same quality we deliver to our clients."
+        path="/products"
       />
 
       <section className="pb-16 pt-4 md:pb-20 lg:pb-28">

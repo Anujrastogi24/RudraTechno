@@ -2,9 +2,17 @@ import Breadcrumb from "@/components/Common/Breadcrumb";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Portfolio | Rudra Techno",
+  title: "Portfolio",
   description:
     "Selected case studies and projects delivered by Rudra Techno across SaaS, e-commerce, and internal tooling.",
+  alternates: { canonical: "/portfolio" },
+  openGraph: {
+    title: "Portfolio | Rudra Techno",
+    description:
+      "Selected case studies and projects delivered by Rudra Techno across SaaS, e-commerce, and internal tooling.",
+    url: "/portfolio",
+    type: "website",
+  },
 };
 
 const caseStudies = [
@@ -44,6 +52,7 @@ const PortfolioPage = () => {
       <Breadcrumb
         pageName="Portfolio"
         description="A selection of websites and software Rudra Techno has designed and delivered. Each project is built to its client's exact requirements."
+        path="/portfolio"
       />
 
       <section className="py-16 md:py-20 lg:py-28">

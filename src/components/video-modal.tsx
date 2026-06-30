@@ -26,16 +26,29 @@ export default function VideoModal({ isOpen, onClose, ...props }: PropsType) {
   }
 
   return createPortal(
-    <div className="fixed inset-0 flex items-center justify-center bg-black/60">
-      <div className="relative w-full max-w-4xl bg-gray-900">
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 p-4 sm:p-6"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-4xl"
+      >
         <button
           onClick={onClose}
-          className="absolute -top-2 -right-4 translate-x-full text-7xl leading-none text-white cursor-pointer"
+          aria-label="Close modal"
+          className="absolute -top-10 right-0 cursor-pointer text-4xl leading-none text-white transition hover:text-white/70 sm:-top-2 sm:-right-4 sm:translate-x-full sm:text-7xl"
         >
           <span className="sr-only">Close modal</span>
-          &times;
+          <span aria-hidden>&times;</span>
         </button>
-        <iframe width="100%" height="500" src={src} allowFullScreen />
+        <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-gray-900">
+          <iframe
+            className="absolute inset-0 h-full w-full"
+            src={src}
+            allowFullScreen
+          />
+        </div>
       </div>
     </div>,
     document.body,

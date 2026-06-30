@@ -4,9 +4,17 @@ import Pricing from "@/components/Pricing";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Services | Rudra Techno",
+  title: "Services",
   description:
     "Custom website development, web & mobile apps, SaaS products, and ongoing support — delivered by Rudra Techno.",
+  alternates: { canonical: "/services" },
+  openGraph: {
+    title: "Services | Rudra Techno",
+    description:
+      "Custom website development, web & mobile apps, SaaS products, and ongoing support — delivered by Rudra Techno.",
+    url: "/services",
+    type: "website",
+  },
 };
 
 const services = [
@@ -48,6 +56,7 @@ const ServicesPage = () => {
       <Breadcrumb
         pageName="Our Services"
         description="From a single landing page to a full SaaS platform, Rudra Techno designs, builds, and ships software tailored to your requirements."
+        path="/services"
       />
 
       <section className="py-16 md:py-20 lg:py-28">

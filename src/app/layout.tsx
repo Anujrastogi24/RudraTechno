@@ -2,7 +2,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ScrollToTop from "@/components/ScrollToTop";
 import { siteConfig } from "@/lib/site";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import { Providers } from "./providers";
 import "../styles/index.css";
@@ -58,12 +58,25 @@ export const metadata: Metadata = {
       follow: true,
       "max-image-preview": "large",
       "max-snippet": -1,
+      "max-video-preview": -1,
     },
   },
   icons: {
     icon: "/icon.png",
     shortcut: "/favicon.ico",
+    apple: "/icon.png",
   },
+  manifest: "/manifest.webmanifest",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  colorScheme: "light dark",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b1120" },
+  ],
 };
 
 const organizationJsonLd = {
@@ -79,6 +92,20 @@ const organizationJsonLd = {
     contactType: "customer support",
     url: `${siteConfig.url}/contact`,
   },
+  sameAs: [
+    "https://www.facebook.com/rudratechno",
+    "https://twitter.com/rudratechno",
+    "https://www.linkedin.com/company/rudratechno",
+  ],
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteConfig.name,
+  url: siteConfig.url,
+  description: siteConfig.description,
+  publisher: { "@type": "Organization", name: siteConfig.name },
 };
 
 export default function RootLayout({
@@ -93,6 +120,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationJsonLd),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteJsonLd),
           }}
         />
       </head>

@@ -8,6 +8,14 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "Rudra Techno is a product studio that designs and builds custom websites and software for growing businesses.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About | Rudra Techno",
+    description:
+      "Rudra Techno is a product studio that designs and builds custom websites and software for growing businesses.",
+    url: "/about",
+    type: "website",
+  },
 };
 
 const AboutPage = () => {
@@ -16,6 +24,7 @@ const AboutPage = () => {
       <Breadcrumb
         pageName="About Rudra Techno"
         description="We're a product studio that designs and builds custom websites and software — pairing senior engineering with clear, transparent delivery."
+        path="/about"
       />
       <AboutSectionOne />
       <AboutSectionTwo />

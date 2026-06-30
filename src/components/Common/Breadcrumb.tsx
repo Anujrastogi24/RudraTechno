@@ -1,14 +1,44 @@
+import { siteConfig } from "@/lib/site";
 import Link from "next/link";
 
 const Breadcrumb = ({
   pageName,
   description,
+  path,
 }: {
   pageName: string;
   description: string;
+  path?: string;
 }) => {
+  const breadcrumbJsonLd = path
+    ? {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: siteConfig.url,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: pageName,
+            item: `${siteConfig.url}${path}`,
+          },
+        ],
+      }
+    : null;
+
   return (
     <section className="relative overflow-hidden border-b border-gray-200 pt-36 pb-16 md:pt-44 md:pb-20 dark:border-white/10">
+      {breadcrumbJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        />
+      )}
       {/* Single restrained top glow */}
       <div
         aria-hidden

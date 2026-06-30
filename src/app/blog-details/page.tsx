@@ -5,14 +5,39 @@ import Image from "next/image";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog Details Page  | Rudra Techno",
-  description: "This is the Blog Details Page for Rudra Techno",
-  // other metadata
+  title: "10 amazing sites to download stock photos & digital assets for free",
+  description:
+    "A curated roundup of the best free sites to download high-quality stock photos and digital assets for your next project.",
+  alternates: { canonical: "/blog-details" },
+  openGraph: {
+    title:
+      "10 amazing sites to download stock photos & digital assets for free",
+    description:
+      "A curated roundup of the best free sites to download high-quality stock photos and digital assets for your next project.",
+    url: "/blog-details",
+    type: "article",
+  },
+};
+
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline:
+    "10 amazing sites to download stock photos & digital assets for free",
+  description:
+    "A curated roundup of the best free sites to download high-quality stock photos and digital assets for your next project.",
+  author: { "@type": "Person", name: "Musharof Chy" },
+  publisher: { "@type": "Organization", name: "Rudra Techno" },
+  datePublished: "2024-01-12",
 };
 
 const BlogDetailsPage = () => {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <section className="pt-[150px] pb-[120px]">
         <div className="container">
           <div className="-mx-4 flex flex-wrap justify-center">

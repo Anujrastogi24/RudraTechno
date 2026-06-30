@@ -5,17 +5,26 @@ import Breadcrumb from "@/components/Common/Breadcrumb";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog Page  | Rudra Techno",
-  description: "This is the Blog Page for Rudra Techno",
-  // other metadata
+  title: "Blog",
+  description:
+    "Insights, guides, and updates from the Rudra Techno team on web development, SEO, performance, and building software that ships.",
+  alternates: { canonical: "/blog" },
+  openGraph: {
+    title: "Blog | Rudra Techno",
+    description:
+      "Insights, guides, and updates from the Rudra Techno team on web development, SEO, performance, and building software that ships.",
+    url: "/blog",
+    type: "website",
+  },
 };
 
 const Blog = () => {
   return (
     <>
       <Breadcrumb
-        pageName="Blog Grid"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero."
+        pageName="Blog"
+        description="Insights, guides, and updates from the Rudra Techno team on web development, SEO, performance, and building software that ships."
+        path="/blog"
       />
 
       <section className="pt-[120px] pb-[120px]">

@@ -7,9 +7,17 @@ import Image from "next/image";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog Details Page  | Rudra Techno",
-  description: "This is the Blog Details Page for Rudra Techno",
-  // other metadata
+  title: "Blog",
+  description:
+    "Insights, guides, and updates from the Rudra Techno team — with related posts, categories, and tags.",
+  alternates: { canonical: "/blog-sidebar" },
+  openGraph: {
+    title: "Blog | Rudra Techno",
+    description:
+      "Insights, guides, and updates from the Rudra Techno team — with related posts, categories, and tags.",
+    url: "/blog-sidebar",
+    type: "website",
+  },
 };
 
 const BlogSidebarPage = () => {

@@ -3,9 +3,10 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Sign Up Page  | Rudra Techno",
-  description: "This is the Sign Up Page for Rudra Techno",
-  // other metadata
+  title: "Start a Project",
+  description: "Create your Rudra Techno account and start a project.",
+  alternates: { canonical: "/signup" },
+  robots: { index: false, follow: false },
 };
 
 const SignupPage = () => {
